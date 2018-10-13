@@ -149,6 +149,9 @@ local default_config = {
     powerbar_height = 3,
     global_scale = 1,
 
+    highlight_target = false,
+    highlight_target_colour = {1, 1, 1, .4},
+
     auras_enabled = true,
     auras_on_personal = true,
     auras_pulsate = true,

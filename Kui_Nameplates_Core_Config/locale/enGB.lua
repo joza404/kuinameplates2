@@ -9,6 +9,7 @@ L.page_names = {
     text        = 'Text',
     nameonly    = 'Name-only',
     framesizes  = 'Frame sizes',
+    highlights  = 'Highlight',
     auras       = 'Auras',
     classpowers = 'Class powers',
     threat      = 'Threat',
@@ -173,6 +174,9 @@ L.titles = {
     frame_height_personal = 'Personal frame height',
     powerbar_height = 'Power bar height',
     global_scale = 'Global scale',
+
+    highlight_target = 'Target highlight',
+    highlight_target_colour = 'Color of target highlight',
 
     auras_enabled = 'Show auras',
     auras_on_personal = 'Show on personal frame',

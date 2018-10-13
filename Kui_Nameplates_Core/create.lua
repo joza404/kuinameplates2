@@ -74,6 +74,7 @@ local FADE_UNTRACKED,FADE_AVOID_NAMEONLY,FADE_AVOID_MOUSEOVER,
 local TARGET_ARROWS,TARGET_ARROWS_SIZE,TARGET_ARROWS_INSET
 local TARGET_GLOW,TARGET_GLOW_COLOUR,FRAME_GLOW_THREAT,FRAME_GLOW_SIZE,
       GLOW_AS_SHADOW,MOUSEOVER_GLOW,MOUSEOVER_GLOW_COLOUR
+local HIGHLIGHT_TARGET, HIGHLIGHT_TARGET_COLOUR
 local THREAT_BRACKETS,THREAT_BRACKETS_SIZE
 
 -- helper functions ############################################################
@@ -235,6 +236,9 @@ do
 
         FRAME_GLOW_SIZE = Scale(self.profile.frame_glow_size)
         FRAME_GLOW_THREAT = self.profile.frame_glow_threat
+    
+        HIGHLIGHT_TARGET = self.profile.highlight_target
+        HIGHLIGHT_TARGET_COLOUR = self.profile.highlight_target_colour
 
         TEXT_VERTICAL_OFFSET = self.profile.text_vertical_offset
         NAME_VERTICAL_OFFSET = ScaleTextOffset(TEXT_VERTICAL_OFFSET+self.profile.name_vertical_offset)
@@ -442,6 +446,21 @@ do
         f.UpdateHighlight = UpdateHighlight
 
         f.handler:RegisterElement('Highlight',highlight)
+    end
+end
+-- highlight target #############################################################
+do
+    function core:CreateHighlightTarget(f)
+        if not HIGHLIGHT_TARGET then return end
+        
+        local highlight = f.HealthBar:CreateTexture(nil,'HIGHLIGHT_TARGET',nil,2)
+        highlight:SetTexture(BAR_TEXTURE)
+        highlight:SetAllPoints(f.HealthBar)
+        highlight:SetVertexColor(unpack(HIGHLIGHT_TARGET_COLOUR))
+        highlight:SetBlendMode('ADD')
+        highlight:Hide()
+
+        f.handler:RegisterElement('Highlight_Target',highlight)
     end
 end
 -- health bar ##################################################################

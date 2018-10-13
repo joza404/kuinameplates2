@@ -20,6 +20,7 @@ local castbars    = opt:CreateConfigPage('castbars')
 local text        = opt:CreateConfigPage('text')
 local nameonly    = opt:CreateConfigPage('nameonly')
 local framesizes  = opt:CreateConfigPage('framesizes')
+local highlights  = opt:CreateConfigPage('highlights')
 local auras       = opt:CreateConfigPage('auras')
 local threat      = opt:CreateConfigPage('threat')
 local classpowers = opt:CreateConfigPage('classpowers')
@@ -475,6 +476,16 @@ function framesizes:Initialise()
 
     scale_sep:SetPoint('TOP',0,-295)
     global_scale:SetPoint('TOP',0,-325)
+end
+-- highlights ##################################################################
+function highlights:Initialise()
+    local highlight_target = self:CreateCheckBox('highlight_target')
+    local highlight_target_colour = self:CreateColourPicker('highlight_target_colour')
+
+    highlight_target_colour.enabled = function(p) return p.highlight_target end
+
+    highlight_target:SetPoint('TOPLEFT',10,-10)
+    highlight_target_colour:SetPoint('LEFT',highlight_target,'RIGHT',194,0)
 end
 -- auras #######################################################################
 function auras:Initialise()
