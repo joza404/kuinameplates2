@@ -11,10 +11,10 @@ L["page_names"] = {
 	["framesizes"] = "Размеры рамок",
 	["general"] = "Основное",
 	["healthbars"] = "Полоса здоровья",
-	["highlights"] = "Подсветка",
 	["nameonly"] = "Только-имя",
 	["text"] = "Текст",
 	["threat"] = "Угроза",
+	["more_settings"] = "Доп. настройки",
 }
 
 L["titles"] = {
@@ -169,8 +169,6 @@ L["titles"] = {
 	["health_text_hostile_max"] = "Макс. здоровье противника",
 	["health_text_sep"] = "Текст: здоровье",
 	["hide_names"] = "Скрыть не отслеживаемые имена",
-	["highlight_target"] = "Подсветка цели",
-	["highlight_target_colour"] = "Цвет подсветки цели",
 	["level_text"] = "Показать уровень текстом",
 	["mouseover_glow"] = "Свечение при наведении",
 	["mouseover_glow_colour"] = "Цвет свечения при наведении",
@@ -224,6 +222,11 @@ L["titles"] = {
 	["use_blizzard_personal"] = [=[Игнорировать индикатор
 личного ресурса]=],
 	["version"] = "%s от %s @ Curse, версия %s",
+	["highlight_target"] = "Подсветка цели",
+	["highlight_target_colour"] = "Цвет подсветки цели",
+	["highlight_mouseover_colour"] = "Цвет подсветки при наведении",
+	["name_colour_target_check"] = "Другой цвет имени цели",
+	["name_colour_target"] = "Цвет имени цели",
 }
 
 L["tooltips"] = {

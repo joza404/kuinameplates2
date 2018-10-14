@@ -15,7 +15,6 @@ elements/powerbar.lua
 elements/absorbbar.lua
 elements/castbar.lua
 elements/highlight.lua
-elements/highlight_target.lua
 elements/classpowers.lua
 elements/classification.lua
 elements/name.lua
@@ -24,6 +23,7 @@ elements/target.lua
 elements/threat.lua
 elements/auras.lua
 elements/raidicon.lua
+elements/highlight_target.lua
 
 plugins/animation.lua
 plugins/arenaid.lua

@@ -149,9 +149,6 @@ local default_config = {
     powerbar_height = 3,
     global_scale = 1,
 
-    highlight_target = false,
-    highlight_target_colour = {1, 1, 1, .4},
-
     auras_enabled = true,
     auras_on_personal = true,
     auras_pulsate = true,
@@ -233,6 +230,12 @@ local default_config = {
     cvar_clamp_bottom = GetCVarDefault('nameplateOtherBottomInset'),
     cvar_overlap_v = GetCVarDefault('nameplateOverlapV'),
     cvar_disable_scale = true,
+
+    highlight_target = false,
+    highlight_target_colour = {1, 1, 1, .4},
+    highlight_mouseover_colour = {1, 1, 1, .4},
+    name_colour_target_check = false,
+    name_colour_target = {1, 1, 1},
 }
 -- local functions #############################################################
 local function Scale(v)

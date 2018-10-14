@@ -74,8 +74,9 @@ local FADE_UNTRACKED,FADE_AVOID_NAMEONLY,FADE_AVOID_MOUSEOVER,
 local TARGET_ARROWS,TARGET_ARROWS_SIZE,TARGET_ARROWS_INSET
 local TARGET_GLOW,TARGET_GLOW_COLOUR,FRAME_GLOW_THREAT,FRAME_GLOW_SIZE,
       GLOW_AS_SHADOW,MOUSEOVER_GLOW,MOUSEOVER_GLOW_COLOUR
-local HIGHLIGHT_TARGET, HIGHLIGHT_TARGET_COLOUR
 local THREAT_BRACKETS,THREAT_BRACKETS_SIZE
+local HIGHLIGHT_TARGET, HIGHLIGHT_TARGET_COLOUR, HIGHLIGHT_MOUSEOVER_COLOUR,
+      NAME_COLOUR_TARGET_CHECK, NAME_COLOUR_TARGET
 
 -- helper functions ############################################################
 local CreateStatusBar
@@ -236,9 +237,6 @@ do
 
         FRAME_GLOW_SIZE = Scale(self.profile.frame_glow_size)
         FRAME_GLOW_THREAT = self.profile.frame_glow_threat
-    
-        HIGHLIGHT_TARGET = self.profile.highlight_target
-        HIGHLIGHT_TARGET_COLOUR = self.profile.highlight_target_colour
 
         TEXT_VERTICAL_OFFSET = self.profile.text_vertical_offset
         NAME_VERTICAL_OFFSET = ScaleTextOffset(TEXT_VERTICAL_OFFSET+self.profile.name_vertical_offset)
@@ -272,6 +270,12 @@ do
         GUILD_TEXT_NPCS = self.profile.guild_text_npcs
         GUILD_TEXT_PLAYERS = self.profile.guild_text_players
         TITLE_TEXT_PLAYERS = self.profile.title_text_players
+
+        HIGHLIGHT_TARGET = self.profile.highlight_target
+        HIGHLIGHT_TARGET_COLOUR = self.profile.highlight_target_colour
+        HIGHLIGHT_MOUSEOVER_COLOUR = self.profile.highlight_mouseover_colour
+        NAME_COLOUR_TARGET_CHECK = self.profile.name_colour_target_check
+        NAME_COLOUR_TARGET = self.profile.name_colour_target
     end
     function core:LSMMediaRegistered(msg,mediatype,key)
         -- callback registered in config.lua:InitialiseConfig
@@ -439,7 +443,7 @@ do
         local highlight = f.HealthBar:CreateTexture(nil,'ARTWORK',nil,2)
         highlight:SetTexture(BAR_TEXTURE)
         highlight:SetAllPoints(f.HealthBar)
-        highlight:SetVertexColor(1,1,1,.4)
+        highlight:SetVertexColor(unpack(HIGHLIGHT_MOUSEOVER_COLOUR))
         highlight:SetBlendMode('ADD')
         highlight:Hide()
 
@@ -632,6 +636,9 @@ do
 
         if f.state.personal then
             -- self (name & guild text always hidden)
+            return
+        elseif f.state.target and NAME_COLOUR_TARGET_CHECK then
+            f.NameText:SetTextColor(unpack(NAME_COLOUR_TARGET))
             return
         elseif UnitIsPlayer(f.unit) then
             -- other players

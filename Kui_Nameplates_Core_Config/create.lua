@@ -20,12 +20,12 @@ local castbars    = opt:CreateConfigPage('castbars')
 local text        = opt:CreateConfigPage('text')
 local nameonly    = opt:CreateConfigPage('nameonly')
 local framesizes  = opt:CreateConfigPage('framesizes')
-local highlights  = opt:CreateConfigPage('highlights')
 local auras       = opt:CreateConfigPage('auras')
 local threat      = opt:CreateConfigPage('threat')
 local classpowers = opt:CreateConfigPage('classpowers')
 local bossmod     = opt:CreateConfigPage('bossmod')
 local cvars       = opt:CreateConfigPage('cvars')
+local more_settings = opt:CreateConfigPage('more_settings')
 
 -- show inital page
 opt.pages[1]:ShowPage()
@@ -477,16 +477,6 @@ function framesizes:Initialise()
     scale_sep:SetPoint('TOP',0,-295)
     global_scale:SetPoint('TOP',0,-325)
 end
--- highlights ##################################################################
-function highlights:Initialise()
-    local highlight_target = self:CreateCheckBox('highlight_target')
-    local highlight_target_colour = self:CreateColourPicker('highlight_target_colour')
-
-    highlight_target_colour.enabled = function(p) return p.highlight_target end
-
-    highlight_target:SetPoint('TOPLEFT',10,-10)
-    highlight_target_colour:SetPoint('LEFT',highlight_target,'RIGHT',194,0)
-end
 -- auras #######################################################################
 function auras:Initialise()
     local auras_enabled = self:CreateCheckBox('auras_enabled')
@@ -786,4 +776,23 @@ function cvars:Initialise()
     ov:SetPoint('LEFT',md,'RIGHT',20,0)
     ct:SetPoint('TOPLEFT',10,-295)
     cb:SetPoint('LEFT',ct,'RIGHT',20,0)
+end
+-- customs #####################################################################
+function more_settings:Initialise()
+    local highlight_target = self:CreateCheckBox('highlight_target')
+    highlight_target:SetPoint('TOPLEFT',10,-10)
+
+    local highlight_target_colour = self:CreateColourPicker('highlight_target_colour')
+    highlight_target_colour:SetPoint('LEFT',highlight_target,'RIGHT',194,0)
+    highlight_target_colour.enabled = function(p) return p.highlight_target end
+
+    local highlight_mouseover_colour = self:CreateColourPicker('highlight_mouseover_colour')
+    highlight_mouseover_colour:SetPoint('TOPLEFT',10,-50)
+
+    local name_colour_target_check = self:CreateCheckBox('name_colour_target_check')
+    name_colour_target_check:SetPoint('TOPLEFT',10,-90)
+
+    local name_colour_target = self:CreateColourPicker('name_colour_target')
+    name_colour_target:SetPoint('LEFT',name_colour_target_check,'RIGHT',194,0)
+    name_colour_target.enabled = function(p) return p.name_colour_target_check end
 end
